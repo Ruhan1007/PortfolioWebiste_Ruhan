@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+</head>
+<body>
+
+    <h2>Contact Form</h2>
+
+    <form action="/submit" method="POST">
+
+        <!-- Full Name -->
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name">
+
+        <!-- Email -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+
+        <!-- Password -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+
+        <!-- Phone Number -->
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone">
+
+        <!-- Country -->
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+            <option>India</option>
+            <option>USA</option>
+            <option>Canada</option>
+            <option>Australia</option>
+        </select>
+
+        <!-- Experience Level -->
+        <p>Experience Level:</p>
+
+        <input type="radio" id="beginner" name="experience" value="Beginner">
+        <label for="beginner">Beginner</label>
+
+        <input type="radio" id="intermediate" name="experience" value="Intermediate">
+        <label for="intermediate">Intermediate</label>
+
+        <input type="radio" id="expert" name="experience" value="Expert">
+        <label for="expert">Expert</label>
+
+        <!-- Skills -->
+        <p>Skills:</p>
+
+        <input type="checkbox" id="html" name="skills" value="HTML">
+        <label for="html">HTML</label>
+
+        <input type="checkbox" id="css" name="skills" value="CSS">
+        <label for="css">CSS</label>
+
+        <input type="checkbox" id="javascript" name="skills" value="JavaScript">
+        <label for="javascript">JavaScript</label>
+
+        <!-- Message -->
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="1"></textarea>
+
+        <!-- Buttons -->
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+
+    </form>
+
+</body>
+</html>
