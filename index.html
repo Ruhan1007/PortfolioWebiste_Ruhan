@@ -3,7 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio | Ruhan Singh Kharayat</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Full stack developer specializing in React, Node.js, and modern web technologies. Available for freelance projects and collaborations.">
+    <meta name="keywords" content="Ruhan, Portfolio, Web Developer, React, Node.js, JavaScript, HTML, CSS, Freelance Developer">
+    <meta name="author" content="Ruhan">
+    <title>My Portfolio | Ruhan</title>
+    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <meta property="og:title" content="My Portfolio | Ruhan">
+    <meta property="og:description" content="Full stack developer specializing in React, Node.js, and modern web technologies. Available for freelance projects and collaborations.">
+    <meta property="og:image" content="images/profile.jpg">
+    <meta property="og:url" content="https://www.linkedin.com/in/ruhan-singh-kharayat-5a34b7372/">
+    <meta property="og:type" content="website">
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="My Portfolio | Ruhan">
+    <meta name="twitter:description" content="Full stack developer specializing in React, Node.js, and modern web technologies. Available for freelance projects and collaborations.">
+    <meta name="twitter:image" content="images/profile.jpg">
+    <!--Favicon-->
+    <link rel="icon" type="image/png" href="images/favicon.jpg" alt="Favicon">
 </head>
 <body>
  
@@ -25,7 +42,10 @@
     <!-- ABOUT SECTION -->
     <section id="about">
         <h2>About Me</h2>
-        <img src="profile.jpg" alt="Profile photo of Ruhan Singh Kharayat" width="150">
+        <figure class="profile-figure">
+                    <img src="images/profile.jpg" alt="Ruhan Singh Kharayat profile photo" width="300">
+                    <figcaption>Ruhan Singh Kharayat — Student</figcaption>
+                </figure>
         <p>I love building things on the web. Currently learning HTML, CSS, JavaScript, and React.</p>
     </section>
  
@@ -69,6 +89,9 @@
             <p>Description of project 1</p>
             <a href="#">View Project</a>
         </div>
+         <!--Embed YouTube Video (iframe)-->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/P3BlPnxmCYQ?si=Pfizm_eYbQq16wGo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ 
     </section>
  
     <!-- CONTACT SECTION -->
@@ -96,7 +119,7 @@
         <textarea id="message" name="message" rows="1"
                   placeholder="Tell me about your project..." required></textarea>
  
-        <button type="submit">Send Message 🚀</button>
+        <button type="submit" aria-label="Submit button">Send Message 🚀</button>
     </form>
 </section>
  
