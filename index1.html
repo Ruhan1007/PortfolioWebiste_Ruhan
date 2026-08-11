@@ -7,7 +7,7 @@
     <meta name="description" content="Portfolio of Ruhan Singh Kharayat, web developer">
     <meta property="og:title" content="Ruhan Singh Kharayat | Web Developer">
     <meta property="og:image" content="images/preview.png">
-    <link rel="icon" href="images/favicon.jpg">
+    <link rel="icon" href="images/favicon.png">
     <link rel="stylesheet" href="styles.css">  <!-- Ready for Day 5! -->
 </head>
 <body>
@@ -52,51 +52,162 @@
         <!-- ABOUT SECTION -->
         <section id="about" class="about-section">
             <h2>About Me</h2>
+
             <div class="about-content">
+
                 <figure class="profile-figure">
-                    <img src="images/profile.jpg" alt="Ruhan Singh Kharayat profile photo" width="300">
+                    <img src="images/profile.jpg"
+                        alt="Ruhan Singh Kharayat profile photo"
+                        width="300">
                     <figcaption>Ruhan Singh Kharayat — Web Developer</figcaption>
                 </figure>
+
                 <div class="about-text">
-                    <p>I'm a passionate web developer...</p>
+                    <p>
+                        I'm a passionate web developer who enjoys building creative,
+                        responsive, and user-friendly websites. I love turning ideas
+                        into functional digital experiences using modern web
+                        technologies.
+                    </p>
+
+                    <p>
+                        I'm continuously learning and improving my skills in
+                        HTML, CSS, JavaScript, React, and other technologies while
+                        working on real-world projects.
+                    </p>
+
+                    <p>
+                        I also enjoy exploring new technologies, participating in
+                        hackathons, and developing projects that solve practical
+                        problems.
+                    </p>
                 </div>
+
             </div>
         </section>
- 
+
         <!-- SKILLS SECTION -->
         <section id="skills" class="skills-section">
             <h2>Skills</h2>
+
             <div class="skills-grid">
                 <div class="skill-item" data-level="90">HTML5</div>
-                <div class="skill-item" data-level="80">CSS3</div>
+                <div class="skill-item" data-level="85">CSS3</div>
                 <div class="skill-item" data-level="75">JavaScript</div>
                 <div class="skill-item" data-level="65">React</div>
+
+                <div class="skill-item" data-level="80">Python</div>
+                <div class="skill-item" data-level="70">C</div>
+                <div class="skill-item" data-level="65">Java</div>
+                <div class="skill-item" data-level="70">SQL</div>
+
+                <div class="skill-item" data-level="60">Node.js</div>
+                <div class="skill-item" data-level="70">REST APIs</div>
+                <div class="skill-item" data-level="75">Git</div>
+                <div class="skill-item" data-level="75">GitHub</div>
+
+                <div class="skill-item" data-level="75">Arduino</div>
+                <div class="skill-item" data-level="70">IoT</div>
+                <div class="skill-item" data-level="70">Responsive Design</div>
+                <div class="skill-item" data-level="65">UI/UX Design</div>
+
+                <div class="skill-item" data-level="65">MongoDB</div>
+                <div class="skill-item" data-level="60">Firebase</div>
+                <div class="skill-item" data-level="65">Tailwind CSS</div>
+                <div class="skill-item" data-level="60">Figma</div>
             </div>
         </section>
  
         <!-- PROJECTS SECTION -->
         <section id="projects" class="projects-section">
             <h2>My Projects</h2>
-            <div class= "project-filters">
-                <!--The data-filter attribute is what our JS will read-->
+
+            <div class="project-filters">
+                <!-- The data-filter attribute is what our JS will read -->
                 <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn active" data-filter="web">Web</button>
-                <button class="filter-btn active" data-filter="design">Design</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="design">Design</button>
             </div>
+
             <div class="projects-grid">
+
+                <!-- PROJECT 1 -->
                 <article class="project-card" data-category="web">
                     <img src="images/project1.png" alt="Weather App screenshot">
+
                     <div class="project-card-body">
                         <h3>Weather App</h3>
-                    <p>Real-time weather dashboard using OpenWeather API</p>
-                    <div class="project-tags">
-                        <span class="tag">React</span>
-                        <span class="tag">API</span>
+                        <p>Real-time weather dashboard using OpenWeather API</p>
+
+                        <div class="project-tags">
+                            <span class="tag">React |</span>
+                            <span class="tag">API</span>
+                        </div>
+
+                        <a href="https://weather-app-zeta-sooty-95.vercel.app/" class="btn btn-primary" target="_blank"> Live Demo </a>
+                        <a href="https://github.com/Ruhan1007/weather_app" class="btn btn-primary" target="_blank"> GitHub </a>
                     </div>
-                    <a href="https://www.accuweather.com/en/in/bengaluru/204108/weather-forecast/204108" class="btn">Live Demo</a>
-                    <a href="https://github.com/Ruhan1007/weather_app" class="btn">GitHub</a>
+                </article>
+
+
+                <!-- PROJECT 2 -->
+                <article class="project-card" data-category="web">
+                    <img src="images/project2.png" alt="Water Quality Monitoring System">
+
+                    <div class="project-card-body">
+                        <h3>Water Quality Monitoring</h3>
+                        <p>Arduino-based system for real-time water quality monitoring.</p>
+
+                        <div class="project-tags">
+                            <span class="tag">Arduino |</span>
+                            <span class="tag">IoT</span>
+                        </div>
+
+                        <a href="https://www.youtube.com/watch?v=nT6Q5atNLJM" class="btn btn-primary">View Project</a>
+                        <a href="https://github.com/Ruhan1007/water_quality_monitoring_system" class="btn btn-primary">GitHub</a>
                     </div>
-                </article>                
+                </article>
+
+
+                <!-- PROJECT 3 -->
+                <article class="project-card" data-category="web">
+                    <img src="images/project3.png" alt="Smart Multi-Hazard Detection System">
+
+                    <div class="project-card-body">
+                        <h3>Smart Multi-Hazard System</h3>
+                        <p>Smart system designed to detect fire, gas leaks and flooding.</p>
+
+                        <div class="project-tags">
+                            <span class="tag">Arduino |</span>
+                            <span class="tag">IoT |</span>
+                            <span class="tag">Sensors</span>
+                        </div>
+
+                        <a href="https://www.youtube.com/watch?v=1lmWAwZ-yI8" class="btn btn-primary">View Project</a>
+                        <a href="https://github.com/Ruhan1007/smart_multi_hazard_detection_system" class="btn btn-primary">GitHub</a>
+                    </div>
+                </article>
+
+
+                <!-- PROJECT 4 -->
+                <article class="project-card" data-category="design">
+                    <img src="images/project4.png" alt="Portfolio Website">
+
+                    <div class="project-card-body">
+                        <h3>Portfolio Website</h3>
+                        <p>Personal responsive portfolio website showcasing my skills and projects.</p>
+
+                        <div class="project-tags">
+                            <span class="tag">HTML |</span>
+                            <span class="tag">CSS |</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+
+                        <a href="https://ruhan-portfolio-eta.vercel.app/" class="btn btn-primary">Live Demo</a>
+                        <a href="https://github.com/Ruhan1007/personal_portfolio" class="btn btn-primary">GitHub</a>
+                    </div>
+                </article>
+
             </div>
         </section>
  
