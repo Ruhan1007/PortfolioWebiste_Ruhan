@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 9: DOM Manipulation</title>
+    <style>
+        /* Basic Styling so our playground looks nice */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+ 
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+ 
+        h1 { margin-top: 0; }
+ 
+        /* A class we will toggle using JavaScript */
+        .dark-mode {
+            background-color: #1a1a1a;
+            color: #f4f6f8;
+        }
+        .dark-mode .container {
+            background-color: #2d2d2d;
+            box-shadow: 0 4px 10px rgba(255,255,255,0.05);
+        }
+ 
+        .control-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #e2e8f0;
+            border-radius: 8px;
+        }
+ 
+        .dark-mode .control-panel { background: #475569; }
+ 
+        button {
+            padding: 10px 15px;
+            background-color: #1B4F72;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover { background-color: #F18F01; }
+       
+        button:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+        }
+ 
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+ 
+        li {
+            background: #e2e8f0;
+            margin: 8px 0;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+       
+        .dark-mode li { background: #334155; }
+ 
+        .delete-btn {
+            background-color: #ef4444;
+        }
+        .delete-btn:hover { background-color: #b91c1c; }
+ 
+        /* A class to demonstrate classList.add() */
+        .highlight {
+            border-left: 5px solid #F18F01;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+ 
+    <div class="container">
+        <!-- Element to demonstrate text and style changes -->
+        <h1 id="main-title">DOM Manipulation Playground</h1>
+        <p id="subtitle">Watch this text change when you click the buttons!</p>
+ 
+        <!-- Element to demonstrate attributes -->
+        <img id="demo-image" src="images/profile.jpg" alt="Placeholder image" style="border-radius: 8px; max-width: 100%;">
+ 
+        <hr style="margin: 20px 0; border: 1px solid #ccc;">
+ 
+        <!-- Control Panel for Instructor to click -->
+        <div class="control-panel">
+            <button id="btn-read">1. Read Content (Console)</button>
+            <button id="btn-change">2. Change Text & Style</button>
+            <button id="btn-class">3. Toggle Dark Mode (Classes)</button>
+            <button id="btn-attr">4. Change Image (Attributes)</button>
+            <button id="btn-add">5. Create & Add New Item</button>
+            <button id="btn-traverse">6. Traverse & Highlight</button>
+        </div>
+ 
+        <!-- Element to demonstrate NodeLists, Traversal, and Removal -->
+        <h3>Task List:</h3>
+        <ul id="task-list">
+            <li class="task-item">
+                <span>Task 1: Learn DOM</span>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li class="task-item">
+                <span>Task 2: <strong>Practice JavaScript</strong></span>
+                <button class="delete-btn">Delete</button>
+            </li>
+        </ul>
+    </div>
+ 
+    <!-- JAVASCRIPT STARTS HERE -->
+    <script>
+        /* ========================================================
+           CONCEPT 1 & 2: Selecting Elements & Reading Content
+           (querySelector, querySelectorAll, textContent, innerHTML)
+           ========================================================
+        */
+        document.getElementById('btn-read').addEventListener('click', () => {
+            // Select ALL list items (Returns a NodeList)
+            const tasks = document.querySelectorAll('.task-item');
+            console.log(`Found ${tasks.length} tasks!`);
+ 
+            // Read content of the second task (Index 1)
+            const secondTaskSpan = tasks[1].querySelector('span');
+           
+            console.log("--- Reading Content ---");
+            console.log("textContent:", secondTaskSpan.textContent); // Plain text
+            console.log("innerHTML:", secondTaskSpan.innerHTML);     // Shows the <strong> tags!
+            alert("Check your browser Console (F12) to see the read content!");
+        });
+ 
+ 
+        /* ========================================================
+           CONCEPT 3: Changing Content and Changing Styles
+           ========================================================
+        */
+        document.getElementById('btn-change').addEventListener('click', () => {
+            const title = document.querySelector('#main-title');
+           
+            // Changing content
+            title.textContent = "JavaScript is Awesome! 🚀";
+           
+            // Changing styles (Inline styles)
+            title.style.color = "#1B4F72";
+            title.style.textAlign = "center";
+            title.style.fontSize = "40px";
+        });
+ 
+ 
+        /* ========================================================
+           CONCEPT 4: Working with Classes
+           (classList.add, remove, toggle)
+           ========================================================
+        */
+        document.getElementById('btn-class').addEventListener('click', () => {
+            const bodyElement = document.querySelector('body');
+           
+            // Toggle acts like a light switch!
+            // If the class is there, it removes it. If it's missing, it adds it.
+            bodyElement.classList.toggle('dark-mode');
+        });
+ 
+ 
+        /* ========================================================
+           CONCEPT 5: Working with Attributes
+           (getAttribute, setAttribute)
+           ========================================================
+        */
+        document.getElementById('btn-attr').addEventListener('click', (event) => {
+            const img = document.getElementById('demo-image');
+           
+            // Read the current source
+            const currentSrc = img.getAttribute('src');
+            console.log("Old Image Source:", currentSrc);
+ 
+            // Change to a new image using setAttribute
+            img.setAttribute('src', 'images/tajmahal.jpeg');
+            img.setAttribute('alt', 'New customized image');
+ 
+            // Disable this button so we can't click it again
+            console.log("What is event ??? ",event);
+            event.target.setAttribute('disabled', 'true');
+            event.target.textContent = "Image Changed!";
+        });
+ 
+ 
+        /* ========================================================
+           CONCEPT 6 & 7: Creating & Adding Elements
+           (createElement, appendChild)
+           ========================================================
+        */
+        let taskCount = 2; // Keep track of tasks
+       
+        document.getElementById('btn-add').addEventListener('click', () => {
+            taskCount++;
+            const list = document.getElementById('task-list');
+ 
+            // 1. Create the new elements
+            const newLi = document.createElement('li');
+            newLi.classList.add('task-item'); // Add class
+ 
+            const newSpan = document.createElement('span');
+            newSpan.textContent = `Task ${taskCount}: New dynamically added task!`;
+ 
+            const newBtn = document.createElement('button');
+            newBtn.textContent = "Delete";
+            newBtn.classList.add('delete-btn');
+ 
+            // 2. Assemble them (Add span and btn INTO the li)
+            newLi.appendChild(newSpan);
+            newLi.appendChild(newBtn);
+ 
+            // 3. Insert into the page (Add li INTO the ul)
+            list.prepend(newLi); // Try .prepend(newLi) to add it to the top!
+        });
+ 
+ 
+        /* ========================================================
+           CONCEPT 8 & 9: DOM Traversal & Removing Elements
+           (parentElement, nextElementSibling, remove)
+           ========================================================
+        */
+       
+        // --- TRAVERSAL DEMO ---
+        document.getElementById('btn-traverse').addEventListener('click', () => {
+            const list = document.getElementById('task-list');
+           
+            // Go to the UL, find its FIRST child, then move to the NEXT sibling (the 2nd item)
+            const firstItem = list.firstElementChild;
+            console.log('First Element:',firstItem);
+           
+            if (firstItem && firstItem.nextElementSibling) {
+                const secondItem = firstItem.nextElementSibling;
+                // Add a highlight class to the sibling
+                secondItem.classList.add('highlight');
+            } else {
+                alert("Not enough items to traverse to a sibling!");
+            }
+        });
+ 
+        // --- REMOVAL DEMO ---
+        // We attach an event listener to the UL (Event Delegation - a bit advanced,
+        // but it ensures newly created buttons also work!)
+        document.getElementById('task-list').addEventListener('click', (event) => {
+            console.log('event.target.classList- ',event.target.classList);
+           
+            // Check if what we clicked contains the class 'delete-btn'
+            if (event.target.classList.contains('delete-btn')) {
+               
+                // TRAVERSAL: The button was clicked. We need to find its Parent (the <li>)
+                const listItemToRemove = event.target.parentElement;
+               
+                // REMOVAL: Delete the <li> from the DOM entirely
+                listItemToRemove.remove();
+            }
+        });
+ 
+    </script>
+</body>
+</html>
+ 
