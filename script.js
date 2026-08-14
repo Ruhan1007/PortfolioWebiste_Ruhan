@@ -69,9 +69,10 @@ window.addEventListener('scroll', () =>{
 
 const projects = [
     { id: 1, name: "Weather App", category: "web", image: "images/project1.png", link: "https://weather-app-zeta-sooty-95.vercel.app/", tech: ["React", " | API"] },
-    { id: 2, name: "Water Quality Monitoring", category: "iot", image: "images/project2.png", link: "https://github.com/Ruhan1007/water_quality_monitoring_system", tech: ["Arduino", " | IoT"] },
-    { id: 3, name: "Smart Multi-Hazard System", category: "iot", image: "images/project3.png", link: "https://github.com/Ruhan1007/smart_multi_hazard_detection_system", tech: ["Arduino", " | IoT", " | Sensors"] },
-    { id: 4, name: "Portfolio Website", category: "design", image: "images/project4.png", link: "https://github.com/Ruhan1007/personal_portfolio", tech: ["HTML", " | CSS", " | JavaScript"] }
+    { id: 2, name: "CyberShield", category: "web", image: "images/project2.png", link: "https://cybershield-kohl.vercel.app/", tech: ["HTML", " | CSS", " | JavaScript"] },
+    { id: 3, name: "Smart Multi-Hazard System", category: "iot", image: "images/project3.png", link: "https://smart-web-multi-hazard-system.vercel.app/", tech: ["Arduino", " | IoT", " | Sensors"] },
+    { id: 4, name: "Portfolio Website", category: "design", image: "images/project4.png", link: "https://ruhan-portfolio-eta.vercel.app/", tech: ["HTML", " | CSS", " | JavaScript"] },
+    { id: 5, name: "Water Quality Monitor", category: "web", image: "images/project5.png", link: "https://web-water-quality-monitor.vercel.app/", tech: ["React", " | IoT", " | API"] }
 ];
 
 function renderProjects(filter = "all") {
