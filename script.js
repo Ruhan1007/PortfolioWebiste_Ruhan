@@ -65,7 +65,7 @@ window.addEventListener('scroll', () =>{
     })
 })
 
-// Day 10 - Project Filter System
+// Project Filter System
 
 const projects = [
     { id: 1, name: "Weather App", category: "web", image: "images/project1.png", link: "https://weather-app-zeta-sooty-95.vercel.app/", tech: ["React", " | API"] },
