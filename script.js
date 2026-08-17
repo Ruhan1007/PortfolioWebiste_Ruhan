@@ -112,3 +112,79 @@ document.querySelectorAll(".filter-btn").forEach(btn => {
 // Initial render
 
 renderProjects();
+
+// FORM VALIDATION
+const form = document.querySelector('#contact-form');
+ 
+function showError(input, message){
+    const group = input.closest ('.form-group');
+    const existing = group.querySelector('.error-msg');
+    if(!existing){
+        const errEl = document.createElement('span');
+        errEl.className = 'error-msg';
+        errEl.textContent = message ;
+        group.appendChild(errEl);
+    }
+    input.classList.add('error');
+}
+ 
+function clearErrors(){
+    document.querySelectorAll('.error-msg').forEach(e => e.remove());
+    document.querySelectorAll('.form-group input.error').forEach(e => e.classList.remove('error'));
+    document.querySelectorAll('.form-group textarea.error').forEach(e => e.classList.remove('error'));
+}
+
+ form.addEventListener('submit', async (e) =>{
+    e.preventDefault();
+    clearErrors();
+ 
+    const name = document.querySelector("#name");
+    const email = document.querySelector("#email");
+    const message = document.querySelector("#message");
+ 
+    let valid= true;
+     if(!name.value.trim()) {
+        showError(name, 'Name is requird !');
+        valid= false;
+     }
+     if(!email.value.includes('@')){
+        showError(email, 'Enter a valid email !');
+        valid= false;
+     }
+     if(message.value.trim().length < 10){
+        showError(message, 'Message must be atleast 10 characters !');
+        valid=false;
+     }
+     if(valid){
+        const btn = form.querySelector('button[type="submit"]');
+        btn.textContent ='Sending...'
+        btn.disabled = true;
+     // Simulate sending (replace with real API call later)
+     await new Promise(resolve => setTimeout (resolve, 3000));
+ 
+     btn.textContent='✅ Message Sent !'
+     form.reset();
+     setTimeout(()=>{
+        btn.textContent='Send Message';
+        btn.disabled=false;
+ 
+     },3000)
+    }
+ });
+ 
+ // DARK MODE
+ const themeBtn = document.querySelector(".theme-toggle");
+ function updateThemeIcon(theme) {
+    themeBtn.textContent = theme === "dark" ? "🌙" : "☀️";
+ }
+ if (themeBtn){
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.body.dataset.theme = savedTheme;
+    updateThemeIcon(savedTheme);
+    themeBtn.addEventListener('click', () =>{
+        const nexTheme = document.body.dataset.theme === 'light' ? 'dark' : 'light'
+        document.body.dataset.theme = nexTheme;
+        localStorage.setItem("theme", nexTheme);
+        updateThemeIcon(nexTheme);
+    })
+ }

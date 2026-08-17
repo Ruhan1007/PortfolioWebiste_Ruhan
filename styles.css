@@ -309,7 +309,12 @@ figcaption {
     font-weight: 600;
     color: var(--primary);
 }
- 
+
+.form-group input.error,
+.form-group textarea.error {
+    border: 2px solid red;
+}
+
 .form-group input,
 .form-group textarea,
 .form-select{
@@ -404,4 +409,186 @@ figcaption {
 
 .hero-buttons{
     animation: fadeInUp 0.8s ease 0.6s both;
+}
+
+/* FOR DARK MODE CSS CODE */
+
+/* ========================================
+   DARK MODE
+======================================== */
+ 
+ 
+/* Smooth Transition */
+body,
+.site-header,
+.hero-section,
+.skill-item,
+.project-card,
+.contact-section,
+.site-footer,
+input,
+textarea,
+.btn,
+a {
+    transition: all 0.3s ease;
+}
+ 
+ 
+/* Body */
+body[data-theme="dark"] {
+    background: #121212;
+    color: #f5f5f5;
+}
+ 
+ 
+/* Header */
+body[data-theme="dark"] .site-header,
+body[data-theme="dark"] .navbar {
+    background: #1a1a1a;
+}
+ 
+ 
+/* Navigation Links */
+body[data-theme="dark"] .nav-links a {
+    color: #ffffff;
+}
+ 
+ 
+body[data-theme="dark"] .nav-links a:hover,
+body[data-theme="dark"] .nav-links a.active {
+    color: #F18F01;
+}
+ 
+ 
+/* Logo */
+body[data-theme="dark"] .logo {
+    color: #ffffff;
+}
+ 
+ 
+/* Hero */
+body[data-theme="dark"] .hero-section {
+    background: linear-gradient(135deg, #111827, #1f2937);
+}
+ 
+ 
+/* Highlight */
+body[data-theme="dark"] .highlight {
+    color: #F18F01;
+}
+ 
+ 
+/* About */
+body[data-theme="dark"] .about-section {
+    background: #121212;
+    color: #f5f5f5;
+}
+ 
+ 
+/* Skills */
+body[data-theme="dark"] .skills-section {
+    background: #181818;
+}
+ 
+ 
+body[data-theme="dark"] .skill-item {
+    background: #242424;
+    color: #ffffff;
+    border-color: #F18F01;
+}
+ 
+ 
+/* Projects */
+body[data-theme="dark"] .projects-section {
+    background: #121212;
+}
+ 
+ 
+body[data-theme="dark"] .project-card {
+    background: #242424;
+    color: #ffffff;
+    box-shadow: 0 5px 20px rgba(255,255,255,0.08);
+}
+ 
+ 
+body[data-theme="dark"] .project-card h3,
+body[data-theme="dark"] .project-card p {
+    color: #ffffff;
+}
+ 
+ 
+/* Tags */
+body[data-theme="dark"] .tag {
+    background: #F18F01;
+    color: #ffffff;
+}
+ 
+ 
+/* Contact */
+body[data-theme="dark"] .contact-section {
+    background: #181818;
+}
+ 
+ 
+/* Form */
+body[data-theme="dark"] input,
+body[data-theme="dark"] textarea {
+    background: #2b2b2b;
+    color: #ffffff;
+    border: 1px solid #555;
+}
+ 
+ 
+body[data-theme="dark"] input::placeholder,
+body[data-theme="dark"] textarea::placeholder {
+    color: #bdbdbd;
+}
+ 
+ 
+body[data-theme="dark"] label {
+    color: #ffffff;
+}
+ 
+ 
+/* Buttons */
+body[data-theme="dark"] .btn-primary {
+    background: #F18F01;
+    color: #ffffff;
+}
+ 
+ 
+body[data-theme="dark"] .btn-secondary {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+ 
+ 
+body[data-theme="dark"] .btn-secondary:hover {
+    background: #ffffff;
+    color: #121212;
+}
+ 
+ 
+/* Footer */
+body[data-theme="dark"] .site-footer {
+    background: #1a1a1a;
+    color: #cccccc;
+}
+ 
+ 
+body[data-theme="dark"] .site-footer a {
+    color: #ffffff;
+}
+ 
+ 
+body[data-theme="dark"] .site-footer a:hover {
+    color: #F18F01;
+}
+ 
+ 
+/* Theme Button */
+body[data-theme="dark"] .theme-toggle {
+    background: #333333;
+    color: #ffffff;
+    border: 1px solid #666666;
 }

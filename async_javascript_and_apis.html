@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 11: Async, APIs & Storage</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0fdf4;
+            color: #1e293b;
+            padding: 30px;
+        }
+        h1 { text-align: center; color: #166534; margin-bottom: 30px; }
+ 
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+ 
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #16a34a;
+        }
+ 
+        h2 { font-size: 1.3rem; margin-bottom: 15px; color: #15803d; }
+ 
+        button {
+            background-color: #22c55e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+        button:hover { background-color: #16a34a; }
+        button:disabled { background-color: #94a3b8; cursor: not-allowed; }
+ 
+        .output {
+            background: #1e293b;
+            color: #38bdf8;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            min-height: 80px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+ 
+        /* Loading Spinner */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #38bdf8;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            display: none;
+            margin: 0 auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+ 
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #cbd5e1;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+ 
+    <h1>🚀 Async JavaScript & APIs</h1>
+ 
+    <div class="grid">
+       
+        <!-- 1. setTimeout Demo -->
+        <div class="card">
+            <h2>1. Asynchronous (setTimeout)</h2>
+            <p style="margin-bottom:10px; font-size:0.9rem;">Click to order a pizza. Notice how you can still click the salad button while waiting!</p>
+            <button id="btn-pizza" onclick="orderPizza()">🍕 Order Pizza (Takes 3s)</button>
+            <button id="btn-salad" onclick="makeSalad()" style="background-color: #f59e0b;">🥗 Make Salad (Instant)</button>
+            <div class="output" id="async-output">Waiting for orders...</div>
+        </div>
+ 
+        <!-- 2. Fetch API Demo -->
+        <div class="card">
+            <h2>2. Fetch API (async/await)</h2>
+            <p style="margin-bottom:10px; font-size:0.9rem;">Click to fetch random user data from an external server (JSONPlaceholder).</p>
+            <button id="btn-fetch" onclick="fetchUserData()">🌐 Fetch User Data</button>
+            <div class="output" id="fetch-output" style="text-align: center;">
+                <div class="loader" id="loader"></div>
+                <span id="fetch-text">Click button to fetch...</span>
+            </div>
+        </div>
+ 
+        <!-- 3. LocalStorage Demo -->
+        <div class="card">
+            <h2>3. Local Storage (The Backpack)</h2>
+            <p style="margin-bottom:10px; font-size:0.9rem;">Type a secret, save it, and then refresh the page. It will survive the refresh!</p>
+            <input type="text" id="secret-input" placeholder="Type a secret message...">
+            <div style="display: flex; gap: 10px;">
+                <button onclick="saveSecret()">💾 Save</button>
+                <button onclick="clearSecret()" style="background-color: #ef4444;">🗑️ Clear</button>
+            </div>
+            <div class="output" id="storage-output">
+                Saved Secret: <span style="color: #fbbf24;" id="saved-text">None</span>
+            </div>
+        </div>
+ 
+    </div>
+ 
+    <script>
+        /* =========================================
+           1. ASYNC (setTimeout)
+           ========================================= */
+        const asyncOutput = document.getElementById('async-output');
+ 
+        function orderPizza() {
+            asyncOutput.innerHTML += "\n> 🍕 Pizza ordered! Cooking in background...";
+           
+            // This is asynchronous! It sets a timer and moves on.
+            setTimeout(() => {
+                asyncOutput.innerHTML += "\n> ✅ DING! Pizza is ready!";
+            }, 10000);
+        }
+ 
+        function makeSalad() {
+            // This is synchronous! It happens instantly.
+            asyncOutput.innerHTML += "\n> 🥗 Salad prepared instantly!";
+        }
+ 
+ 
+        /* =========================================
+           2. FETCH API (async / await)
+           ========================================= */
+        async function fetchUserData() {
+            const fetchBtn = document.getElementById('btn-fetch');
+            const fetchText = document.getElementById('fetch-text');
+            const loader = document.getElementById('loader');
+ 
+            // UI loading state
+            fetchBtn.disabled = true;
+            fetchText.style.display = 'none';
+            loader.style.display = 'block';
+ 
+            try {
+                // 1. Send the waiter to the kitchen
+                const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
+               
+                // 2. Unwrap the JSON data
+                const user = await response.json();
+                console.log('User Data- ',user);
+ 
+                // 3. Display it    
+                fetchText.style.display = 'block';
+                fetchText.style.textAlign = 'left';
+                fetchText.innerHTML = `Name: ${user.name}\nEmail: ${user.email}\nCity: ${user.address.city}`;
+ 
+            } catch (error) {
+                // If internet drops or URL is wrong
+                fetchText.style.display = 'block';
+                fetchText.innerHTML = "❌ Error fetching data!";
+                console.error(error);
+            } finally {
+                // Clean up UI
+                loader.style.display = 'none';
+                fetchBtn.disabled = false;
+            }
+        }
+ 
+ 
+        /* =========================================
+           3. LOCAL STORAGE
+           ========================================= */
+        const secretInput = document.getElementById('secret-input');
+        const savedText = document.getElementById('saved-text');
+ 
+        // Check the backpack as soon as the page loads!
+        function loadSecretOnStart() {
+            const saved = localStorage.getItem('mySecret');
+            if (saved) {
+                savedText.textContent = saved;
+            }
+        }
+ 
+        function saveSecret() {
+            const secretValue = secretInput.value;
+            if (!secretValue) return;
+ 
+            // Put it in the backpack
+            localStorage.setItem('mySecret', secretValue);
+           
+            // Update UI
+            savedText.textContent = secretValue;
+            secretInput.value = ''; // clear input
+            alert('Secret saved to Local Storage! Try refreshing the page.');
+        }
+ 
+        function clearSecret() {
+            // Remove from backpack
+            localStorage.removeItem('mySecret');
+            savedText.textContent = 'None';
+        }
+ 
+        // Run this immediately when script loads
+        loadSecretOnStart();
+ 
+    </script>
+</body>
+</html>
+ 
