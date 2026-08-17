@@ -1,10 +1,11 @@
 /* styles.css - Start styling your potfolio website here */
-/* === RESET & BASE === */
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 /* CSS Custom Properties (variables) - DRY Principle */
 :root {
     --primary: #1B4F72;
@@ -15,12 +16,14 @@
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
  
 }
+
 body {
     font-family: var(--font-main);
     color: var(--text);
     line-height: 1.6;
     background-color: var(--white);
 }
+
 /* NAVIGATION */
 .site-header{
     position: sticky;
@@ -29,6 +32,7 @@ body {
     background: var(--primary);
     transition: background 0.3s ease, box-shadow 0.3s ease; /*Day 9*/
 }
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -36,26 +40,31 @@ body {
     padding: 20px 5%;
    
 }
+
 .logo{
     font-size: 28px;
     font-weight: bold;
     color: var(--white);
 }
+
 .nav-links {
     list-style: none;
     display: flex;
     gap: 30px;
 }
+
 .nav-links a {
     color: var(--white);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
 }
+
 .nav-links a:hover {
     color: var(--accent);
  
 }
+
 .nav-links a.active{
     color: var(--accent);
     font-weight: bold;
@@ -63,6 +72,7 @@ body {
 }
 
 /* === BUTTON STYLES === */
+
 .btn{
     display: inline-block;
     padding: 12px 28px;
@@ -73,34 +83,39 @@ body {
     cursor: pointer;
     border: 2px solid transparent;
     transition: all 0.3s ease;
-    margin-top: 15px;
-     
+    margin-top: 15px;     
 }
+
 .btn-primary{
     background: var(--accent);
     color: var(--white);
    
 }
+
 .btn-primary:hover{
     background: transparent;
     color: var(--accent);
     border-color: var(--accent);
 }
+
 .btn-secondary{
     background: transparent;
     color: var(--white);
     border-color: var(--white);
 }
+
 .btn-secondary:hover{
     background: var(--white);
     color: var(--primary);
 }
+
 .project-filters{
     display: flex;
     justify-content: center;
     gap: 15px;
     margin-bottom: 30px;
 }
+
 .filter-btn{
     padding: 8px 20px;
     background: transparent;
@@ -111,17 +126,19 @@ body {
     font-weight: 600;
     transition: all 0.3s ease;
 }
+
 .filter-btn:hover,
 .filter-btn.active{
     background: var(--primary);
     color: var(--white);
- 
 }
 
 /* === SECTION STYLES === */
+
 section{
     padding: 80px 5%;
 }
+
 section h2{
     text-align: center;
     font-size: 2.2rem;
@@ -140,19 +157,21 @@ section h2::after{
 }
  
 /* HERO SECTION */
+
 .hero-section {
     text-align: center;
     background: linear-gradient(135deg, var(--primary), #2E86AB);
     color: var(--white);
     padding: 100px 5%;
 }
+
 .hero-section h1 {
     font-size: 3rem;
     margin-bottom: 20px;
- 
 }
 
 /* === ABOUT SECTION === */
+
 .about-content {
     display: flex;
     flex-direction: column;
@@ -190,6 +209,7 @@ figcaption {
 }
 
 /* ABOUT TEXT */
+
 .about-text {
     width: 100%;
     max-width: 1000px;
@@ -205,6 +225,7 @@ figcaption {
 }
 
 /* SKILLS SECTION */
+
 .skills-grid{
     display:grid;
     grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
@@ -212,6 +233,7 @@ figcaption {
     margin-top: 40px;
     justify-items: space-between;
 }
+
 .skill-item{
     background: var(--light);
     border: 2px solid var(--primary);
@@ -222,11 +244,14 @@ figcaption {
     font-size: 1.1rem;
     transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .skill-item:hover{
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
+
 /* PROJECTS SECTION */
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -269,6 +294,7 @@ figcaption {
 }
 
 /* === CONTACT FORM === */
+
 .contact-section{
     background: var(--light);
 }
@@ -294,6 +320,7 @@ figcaption {
     font-size: 1rem;
     transition: border-color 0.3s;
 }
+
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group .form-select:focus{
@@ -303,6 +330,7 @@ figcaption {
 }
  
 /* === FOOTER === */
+
 .site-footer{
     background: var(--primary);
     color: rgba(255, 255, 255, 0.8);
@@ -311,6 +339,7 @@ figcaption {
 }
 
 /* === RESPONSIVE === */
+
 @media (max-width: 768px){
     .nav-links{ display: none;}
     .menu-toggle {display: block;}
@@ -319,7 +348,9 @@ figcaption {
 }
 
 /* CSS ADDED FOR MENU TOGGLE */
+
 /* === MOBILE NAVIGATION ==== */
+
 .menu-toggle{
     display: none;
     background: none;
@@ -329,6 +360,7 @@ figcaption {
     cursor: pointer;
  
 }
+
 @media (max-width:768px){
     .menu-toggle{
         display:block;
@@ -350,22 +382,26 @@ figcaption {
  
     }
 }
+
 .site-header.scrolled{
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* === ANIMATIONS === */
+
 @keyframes fadeInUp{
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
 .hero-section h1{
     animation: fadeInUp 0.8s ease 0.2s both;
 }
+
 .tagline{
     animation: fadeInUp 0.8s ease 0.4s both;
 }
+
 .hero-buttons{
     animation: fadeInUp 0.8s ease 0.6s both;
 }
-

@@ -35,6 +35,7 @@ menuToggle.addEventListener('click', () =>{
 });
  
 // === SCROLL-BASED NAVBAR STYLING ====
+
 const header = document.querySelector('.site-header');
  
 window.addEventListener('scroll', () =>{
@@ -47,6 +48,7 @@ window.addEventListener('scroll', () =>{
 })
  
 // === ACTIVE NAV LINK on scroll ====
+
 const sections = document.querySelectorAll('section[id]');
 const navItems = document.querySelectorAll('.nav-links a');
  
